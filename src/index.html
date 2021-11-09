@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Fonts Proxy</title>
+    <link href="https://fonts.eu.org/styles/Source+Code+Pro" rel="stylesheet" />
+    <link
+      href="https://fonts.eu.org/styles/Source+Sans+Pro:wght@400;700"
+      rel="stylesheet"
+    />
+    <style>
+      .c {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+      }
+      .f-scp {
+        font-family: 'Source Code Pro', monospace;
+      }
+      .f-ssp {
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+      .f-s-s {
+        font-size: small;
+      }
+      .f-w-b {
+        font-weight: 700;
+      }
+      body {
+        background-color: #eceff1;
+      }
+      .container {
+        background-color: white;
+        border-radius: 16px;
+        height: 360px;
+        width: 576px;
+      }
+      .content {
+        margin: 32px 0px 0px 32px;
+      }
+      .footer {
+        position: absolute;
+        left: 32px;
+        bottom: 32px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="c f-ssp container">
+      <h1 class="f-w-b content">Google Fonts Proxy</h1>
+      <p class="content">
+        A simple and more RESTful compliance Google Fonts proxy built on top of
+        Cloudflare Workers, with cache enabled.
+      </p>
+      <p class="content">
+        Usage:
+        <span
+          class="f-scp f-s-s f-w-b"
+          onclick="s=getSelection();r=document.createRange();r.selectNodeContents(this);s.removeAllRanges();s.addRange(r)"
+          >https://fonts.eu.org/styles/${FONT}/${CSS_DISPLAY_OPTION}</span
+        ><br />(Parameter CSS_DISPLAY_OPTION is optional and can be removed.)
+      </p>
+      <p class="footer">
+        <a href="https://dev.azure.com/fei1yang/workers/_git/fonts"
+          >Source code</a
+        >
+        |
+        <a href="https://dev.azure.com/fei1yang/workers/_workitems"
+          >Report issue</a
+        >
+      </p>
+    </div>
+  </body>
+</html>

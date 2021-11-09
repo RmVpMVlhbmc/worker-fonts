@@ -1,0 +1,8 @@
+name = "fonts"
+type = "javascript"
+
+account_id = ""
+workers_dev = true
+routes = [""]
+zone_id = ""
+compatibility_date = "2021-11-09"

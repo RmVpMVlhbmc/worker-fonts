@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "fonts",
+  "version": "1.0.0",
+  "description": "A Google Fonts proxy built on top of Cloudflare Workers.",
+  "main": "dist/index.js",
+  "scripts": {
+    "format": "prettier --write '**/*.{js,css,json,md}'",
+    "build": "esbuild --bundle --minify --outfile=dist/index.js src/index.js && sed -i \"s#INSERT_INDEX_HTML_HERE#$(base64 < src/index.html | tr -d '\\n')#\" dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fei Yang <projects@feiyang.moe>",
+  "license": "AGPL-3.0-only",
+  "devDependencies": {
+    "esbuild": "^0.13.12",
+    "prettier": "^1.18.2"
+  }
+}
