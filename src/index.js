@@ -66,6 +66,21 @@ async function main(request, event) {
 
         data = new Response(res.body, { headers: finalHeaders })
         break
+      case 'favicon.ico':
+        res = await fetchX(
+          'https://www.gstatic.com/images/branding/product/1x/google_fonts_64dp.png',
+        )
+
+        finalHeaders = Object.assign(
+          {
+            'content-type': res.headers.get('content-type'),
+            'last-modified': res.headers.get('last-modified'),
+          },
+          headers,
+        )
+
+        data = new Response(res.body, { headers: finalHeaders })
+        break
       default:
         const indexHeaders = Object.assign(
           { 'content-type': 'text/html; charset=UTF-8' },
