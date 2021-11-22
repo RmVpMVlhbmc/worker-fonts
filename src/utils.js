@@ -9,7 +9,7 @@ function fetchX(url, init) {
         }
       },
       err => {
-        return reject(err.message)
+        return reject(err)
       },
     )
   })
