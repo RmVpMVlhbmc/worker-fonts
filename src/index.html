@@ -56,9 +56,7 @@
       </p>
       <p class="content">
         Usage:
-        <span
-          class="f-scp f-s-s f-w-b"
-          onclick="s=getSelection();r=document.createRange();r.selectNodeContents(this);s.removeAllRanges();s.addRange(r)"
+        <span class="f-scp f-s-s f-w-b" onclick="selectElement(this)"
           >https://fonts.eu.org/styles/${FONT}/${CSS_DISPLAY_OPTION}</span
         ><br />(Parameter CSS_DISPLAY_OPTION is optional and can be removed.)
       </p>
@@ -72,5 +70,14 @@
         >
       </p>
     </div>
+    <script>
+      function selectElement(element) {
+        const selection = window.getSelection()
+        const range = document.createRange()
+        range.selectNodeContents(element)
+        selection.removeAllRanges()
+        selection.addRange(range)
+      }
+    </script>
   </body>
 </html>
