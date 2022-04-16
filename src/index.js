@@ -82,13 +82,7 @@ async function main(request, event) {
         data = new Response(res.body, { headers: finalHeaders })
         break
       default:
-        const indexHeaders = Object.assign(
-          { 'content-type': 'text/html; charset=UTF-8' },
-          headers,
-        )
-        data = new Response(atob('INSERT_INDEX_HTML_HERE'), {
-          headers: indexHeaders,
-        })
+        data = Response.redirect('https://github.com/RmVpMVlhbmc/worker-fonts', 301)
         break
     }
 
