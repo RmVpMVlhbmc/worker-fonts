@@ -1,0 +1,38 @@
+name: Worker CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    env:
+      WRANGLER_INSTALL_PATH: "/usr/local/bin/.wrangler"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      - name: Setup latest Node.js LTS
+        uses: actions/setup-node@v3.1.0
+        with:
+          node-version: "lts/*"
+      - name: Setup Cloudflare Wrangler
+        # Keep pre-defined variables with param `-E`
+        run: "sudo -E yarn global add @cloudflare/wrangler"
+        working-directory: "/"
+      - name: Setup worker dependencies
+        run: yarn install
+      - name: Build worker
+        run: yarn build
+      - name: Get Cloudflare Wrangler config
+        env:
+          WRANGLER_CONFIG: ${{ secrets.WRANGLER_CONFIG }}
+        run: base64 -d <<< "$WRANGLER_CONFIG" > wrangler.toml
+      - name: Publish worker
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: wrangler publish
